@@ -1,3 +1,5 @@
+import { ThemeToggle } from '@repo/ui/components/theme-toggle';
+
 export default function MarketingLayout({
   children,
 }: {
@@ -6,7 +8,7 @@ export default function MarketingLayout({
   return (
     <div className="min-h-screen">
       <header className="mb-8 border-b py-4">
-        <nav className="flex gap-4">
+        <nav className="flex items-center gap-4">
           <a className="font-semibold" href="/">
             Home
           </a>
@@ -16,6 +18,9 @@ export default function MarketingLayout({
           <a className="text-gray-600 hover:text-gray-900" href="/pricing">
             Pricing
           </a>
+          <div className="ml-auto">
+            <ThemeToggle />
+          </div>
         </nav>
       </header>
       <main>{children}</main>
