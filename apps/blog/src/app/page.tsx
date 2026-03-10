@@ -10,18 +10,18 @@ export default async function BlogHomePage() {
 
       <div className="flex flex-col gap-6">
         {posts.map((post) => (
-          <article key={post.id} className="flex flex-col gap-2 border-b pb-6">
-            <Link href={`/${post.slug}`} className="hover:underline">
+          <article className="flex flex-col gap-2 border-b pb-6" key={post.id}>
+            <Link className="hover:underline" href={`/${post.slug}`}>
               <h2 className="font-semibold text-2xl">{post.title}</h2>
             </Link>
-            <p className="text-sm text-gray-500">
+            <p className="text-gray-500 text-sm">
               {post.category} · {post.readingTime} min read ·{' '}
               {post.publishedAt.toLocaleDateString()}
             </p>
             <p className="text-gray-700">{post.excerpt}</p>
             <Link
+              className="text-blue-600 text-sm hover:underline"
               href={`/${post.slug}`}
-              className="text-sm text-blue-600 hover:underline"
             >
               Read more →
             </Link>
