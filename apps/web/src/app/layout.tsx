@@ -1,10 +1,12 @@
 import { ThemeProvider } from '@repo/ui/components/theme-provider';
 import type { Metadata } from 'next';
 
+import { clientEnv } from '@/env/client';
+
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_APP_NAME || 'Vercel Academy Foundation - Web',
+  title: clientEnv.NEXT_PUBLIC_APP_NAME,
   description: 'VAF Web',
 };
 

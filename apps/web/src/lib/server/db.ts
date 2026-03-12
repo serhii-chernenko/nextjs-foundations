@@ -1,10 +1,11 @@
-import "server-only";
- 
+import 'server-only';
+
+import { env } from '@/env/server';
+
 // Simulate a database call that uses server secrets
 export function getUserFromDB(userId: string) {
-  // In real code, this would use process.env.DATABASE_URL
-  // The INTERNAL_CONFIG demonstrates server-only variable access
-  const config = process.env.INTERNAL_CONFIG ?? "default";
+  // env.INTERNAL_CONFIG is validated at startup — guaranteed to be a string.
+  const config = env.INTERNAL_CONFIG;
  
   // Simulated database response with sensitive fields
   return {

@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 
+import { env } from '@/env';
+
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Vercel Academy Foundation - Blog',
+  title: env.NEXT_PUBLIC_APP_NAME,
   description: 'VAF Blog',
 };
 
