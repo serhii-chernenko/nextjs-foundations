@@ -1,13 +1,13 @@
-import { Suspense } from "react";
+import { Suspense } from 'react';
 
 // Mock data fetching functions (simulate API calls)
 async function fetchUserProfile(id: string) {
   await new Promise((resolve) => setTimeout(resolve, 200));
   return {
     id,
-    name: "Demo User",
-    email: "demo@example.com",
-    joinedAt: new Date("2024-01-15"),
+    name: 'Demo User',
+    email: 'demo@example.com',
+    joinedAt: new Date('2024-01-15'),
   };
 }
 
@@ -19,8 +19,8 @@ async function fetchUserStats(id: string) {
 async function fetchUserActivity(id: string) {
   await new Promise((resolve) => setTimeout(resolve, 200));
   return [
-    { type: "post", title: "My first post", date: new Date() },
-    { type: "comment", title: "Great article!", date: new Date() },
+    { type: 'post', title: 'My first post', date: new Date() },
+    { type: 'comment', title: 'Great article!', date: new Date() },
   ];
 }
 
@@ -54,7 +54,7 @@ async function ProfileContent({ id }: { id: string }) {
         <h2 className="mb-2 font-semibold text-xl">Recent Activity</h2>
         <ul className="space-y-2">
           {activity.map((item, i) => (
-            <li key={i} className="text-gray-700">
+            <li className="text-gray-700" key={i}>
               {item.title}
             </li>
           ))}
