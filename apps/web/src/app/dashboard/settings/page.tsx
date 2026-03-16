@@ -1,0 +1,34 @@
+// Settings page - form state would persist across sibling navigations
+// If you had a form here with unsaved changes, navigating to /analytics
+// and back would preserve those changes (because the layout persists)
+
+export default function SettingsPage() {
+  return (
+    <div>
+      <h1 className="mb-4 font-bold text-3xl">Settings</h1>
+      <p className="mb-6 text-gray-600">
+        Configure your dashboard settings. The sidebar persists during
+        navigation.
+      </p>
+
+      <div className="space-y-6">
+        <div className="rounded-lg border p-4">
+          <h2 className="mb-2 font-semibold">Notifications</h2>
+          <label className="flex items-center gap-2">
+            <input className="rounded" type="checkbox" />
+            <span>Email notifications</span>
+          </label>
+        </div>
+
+        <div className="rounded-lg border p-4">
+          <h2 className="mb-2 font-semibold">Theme</h2>
+          <select className="rounded border px-3 py-2">
+            <option>Light</option>
+            <option>Dark</option>
+            <option>System</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  );
+}
