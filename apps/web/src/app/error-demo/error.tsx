@@ -1,6 +1,15 @@
 'use client';
 
-import { useEffect } from 'react';
+// Nested error boundary with correlation ID for debugging
+// Demonstrates: different error UI, correlation tracking, reset functionality
+
+import { useEffect, useMemo } from 'react';
+
+// Generate a correlation ID for debugging
+// In production, this helps trace errors across logs and support tickets
+function generateCorrelationId(): string {
+  return `err-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+}
 
 export default function ErrorDemoBoundary({
   error,
@@ -9,10 +18,22 @@ export default function ErrorDemoBoundary({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  // Memoize so correlation ID stays stable during re-renders
+  const correlationId = useMemo(() => generateCorrelationId(), []);
+
   useEffect(() => {
-    // biome-ignore lint/suspicious/noConsole: Intentional for error reporting demonstration
-    console.error('Error demo boundary caught:', error);
-  }, [error]);
+    // Log error with correlation ID for debugging
+    // In production: send to Sentry, DataDog, or your error reporting service
+    const errorLog = {
+      correlationId,
+      digest: error.digest,
+      message: error.message,
+      timestamp: new Date().toISOString(),
+      location: '/error-demo',
+    };
+    // biome-ignore lint/suspicious/noConsole: Error logging is intentional
+    console.error('Error demo boundary caught:', errorLog);
+  }, [error, correlationId]);
 
   return (
     <div className="mx-auto max-w-2xl p-8">
@@ -26,7 +47,17 @@ export default function ErrorDemoBoundary({
         <p className="mb-4 font-mono text-orange-600 text-sm">
           {error.message}
         </p>
+        {/* Correlation ID: give to users for support tickets */}
+        <p className="mb-4 font-mono text-orange-400 text-xs">
+          Correlation ID: {correlationId}
+        </p>
+        {error.digest && (
+          <p className="mb-4 font-mono text-orange-400 text-xs">
+            Digest: {error.digest}
+          </p>
+        )}
         <div className="flex gap-3">
+          {/* reset() re-renders the component tree, clearing the error state */}
           <button
             className="rounded bg-orange-600 px-4 py-2 text-white hover:bg-orange-700"
             onClick={reset}

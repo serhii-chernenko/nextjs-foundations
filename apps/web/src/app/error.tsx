@@ -1,8 +1,12 @@
 'use client';
 
+// Root error boundary - catches all runtime errors not handled by nested boundaries
+// Must be a Client Component: error boundaries use React state internally
+
 import { useEffect } from 'react';
 
-export default function Error({
+// Rename to ErrorBoundary to avoid shadowing global Error
+export default function ErrorBoundary({
   error,
   reset,
 }: {
@@ -10,7 +14,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // biome-ignore lint/suspicious/noConsole: Intentional for error reporting demonstration
+    // biome-ignore lint/suspicious/noConsole: Error logging is intentional for debugging
     console.error('Root error boundary caught:', error);
   }, [error]);
 
@@ -23,6 +27,7 @@ export default function Error({
         <p className="mb-4 text-red-600">
           {error.message || 'An unexpected error occurred'}
         </p>
+        {/* digest is Next.js's auto-generated error ID for production - a unique hash that correlates client errors with server logs */}
         {error.digest && (
           <p className="mb-4 font-mono text-red-400 text-xs">
             Error ID: {error.digest}
