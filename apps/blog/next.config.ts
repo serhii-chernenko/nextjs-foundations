@@ -1,6 +1,9 @@
 import type { NextConfig } from 'next';
 
-const blogUrl = process.env.BLOG_URL;
+const blogUrl = (process.env.BLOG_URL || 'http://localhost:3001').replace(
+  /\/$/,
+  ''
+);
 
 const nextConfig: NextConfig = {
   assetPrefix: blogUrl,
