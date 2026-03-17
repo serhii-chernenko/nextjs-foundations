@@ -20,12 +20,7 @@ const nextConfig: NextConfig = {
         },
       ],
       afterFiles: [],
-      fallback: [
-        {
-          source: '/:slug',
-          destination: `${blogUrl}/:slug`,
-        },
-      ],
+      fallback: [],
     };
   },
 };

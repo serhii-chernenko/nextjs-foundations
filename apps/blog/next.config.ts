@@ -8,6 +8,24 @@ const blogUrl = (process.env.BLOG_URL || 'http://localhost:3001').replace(
 const nextConfig: NextConfig = {
   assetPrefix: blogUrl,
   // biome-ignore lint/suspicious/useAwait: No async operations needed here, but Next.js expects a promise
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/blog',
+          destination: '/',
+        },
+        {
+          source: '/blog/:path*',
+          destination: '/:path*',
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
+
+  // biome-ignore lint/suspicious/useAwait: No async operations needed here, but Next.js expects a promise
   async headers() {
     return [
       {
