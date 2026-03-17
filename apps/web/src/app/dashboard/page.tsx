@@ -30,3 +30,11 @@ export async function fetchDashboardData() {
 
   return { user, posts, stats };
 }
+
+export default function DashboardPage() {
+  return (
+    <div className="mx-auto max-w-2xl p-6">
+      <h1 className="font-bold text-2xl">Dashboard</h1>
+    </div>
+  );
+}
