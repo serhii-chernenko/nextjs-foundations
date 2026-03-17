@@ -53,7 +53,7 @@ export default async function BlogListingPage({ searchParams }: Props) {
           <li key={post.id}>
             <Link
               className="block rounded-lg border p-4 hover:bg-gray-50"
-              href={`/${post.slug}`}
+              href={post.slug}
             >
               <h2 className="font-semibold">{post.title}</h2>
               <span className="text-gray-500 text-sm">{post.category}</span>
