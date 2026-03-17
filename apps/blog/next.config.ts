@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  basePath: '/blog',
   // biome-ignore lint/suspicious/useAwait: No async operations needed here, but Next.js expects a promise
   async headers() {
     return [

@@ -8,11 +8,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/blog',
-        destination: `${blogUrl}/blog`,
+        destination: `${blogUrl}`,
       },
       {
         source: '/blog/:path*',
-        destination: `${blogUrl}/blog/:path*`,
+        destination: `${blogUrl}/:path*`,
       },
     ];
   },
