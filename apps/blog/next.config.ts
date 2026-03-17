@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
 
-const blogUrl = process.env.BLOG_URL || 'https://nextjs-foundations-blog.chernenko.dev';
+const blogUrl = process.env.BLOG_URL;
 
 const nextConfig: NextConfig = {
   assetPrefix: blogUrl,
