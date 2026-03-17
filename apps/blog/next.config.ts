@@ -1,9 +1,9 @@
 import type { NextConfig } from 'next';
 
-const blogDomain = process.env.BLOG_DOMAIN || 'https://nextjs-foundations-blog.chernenko.dev';
+const blogUrl = process.env.BLOG_URL || 'https://nextjs-foundations-blog.chernenko.dev';
 
 const nextConfig: NextConfig = {
-  assetPrefix: blogDomain,
+  assetPrefix: blogUrl,
   // biome-ignore lint/suspicious/useAwait: No async operations needed here, but Next.js expects a promise
   async headers() {
     return [

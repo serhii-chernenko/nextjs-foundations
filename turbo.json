@@ -15,8 +15,7 @@
       ],
       "env": [
         "INTERNAL_CONFIG",
-        "BLOG_URL",
-        "BLOG_DOMAIN"
+        "BLOG_URL"
       ]
     },
     "check-types": {
