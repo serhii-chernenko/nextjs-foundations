@@ -15,7 +15,10 @@
       ],
       "env": [
         "INTERNAL_CONFIG",
-        "BLOG_URL"
+        "BLOG_URL",
+        "VERCEL_ENV",
+        "VERCEL_URL",
+        "VERCEL_BRANCH_URL"
       ]
     },
     "check-types": {
