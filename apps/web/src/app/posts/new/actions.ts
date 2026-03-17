@@ -1,7 +1,8 @@
 'use server';
 import { revalidatePath } from 'next/cache';
-
 import { redirect } from 'next/navigation';
+
+import { db } from '@/lib/server/db';
 
 export async function createPost(formData: FormData) {
   const title = formData.get('title') as string;
