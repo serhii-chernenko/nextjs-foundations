@@ -6,14 +6,14 @@ import { env } from '@/env/server';
 export function getUserFromDB(userId: string) {
   // env.INTERNAL_CONFIG is validated at startup — guaranteed to be a string.
   const config = env.INTERNAL_CONFIG;
- 
+
   // Simulated database response with sensitive fields
   return {
     id: userId,
-    email: "user@example.com",
-    passwordHash: "bcrypt$2b$10$...", // NEVER expose this
+    email: 'user@example.com',
+    passwordHash: 'bcrypt$2b$10$...', // NEVER expose this
     internalNotes: `VIP customer (config: ${config})`, // NEVER expose this
-    name: "Jane Developer",
+    name: 'Jane Developer',
     createdAt: new Date().toISOString(),
   };
 }
@@ -41,4 +41,24 @@ export const db = {
       };
     },
   },
+  products: {
+    async update(_params: {
+      where: { id: string }; 
+      data: { name?: string; price?: number; inventory?: number } 
+    }) {
+      // Simulate database update delay
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      // In a real implementation, you'd update the product in the database here
+      return { success: true };
+    },
+    
+    async delete (_params: { where: { id: string } }) {
+      // Simulate database delete delay
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      // In a real implementation, you'd delete the product from the database here
+      return { success: true };
+    }
+  }
 };
